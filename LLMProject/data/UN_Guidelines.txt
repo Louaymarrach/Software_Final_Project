@@ -1,0 +1,33 @@
+UNITED NATIONS DEVELOPMENT PROGRAMME (UNDP) - COMPREHENSIVE SYSTEM ARCHITECTURE GUIDE
+
+--- PART 1: SOFTWARE LOGIC & DATABASE HIERARCHY ---
+This section describes the business rules programmed into the PHP/MySQL backend.
+
+1. VOLUNTEER LIFECYCLE & AUTHENTICATION
+- Registration: When a user registers, their 'status' field in the database is set to 0 (Pending). 
+- Login Guard: The login.php script checks both credentials AND the status field. If status is 0, login is denied with a message: "Account pending approval."
+- Post-Approval: Once a Secretary changes the status to 1 (Active), the volunteer gains access to the Dashboard where they can view Bootcamp assignments.
+
+2. SECRETARY (HUMAN RESOURCES & STAFFING)
+- Authority: Secretaries act as the middle management between the overall system and the boots on the ground.
+- Key Tasks: Reviewing volunteer profiles, verifying their skills, and clicking 'Approve'. They also manage 'Employee' accounts, ensuring every Bootcamp has a designated supervisor.
+
+3. EMPLOYEE (SUPERVISOR & DATA PRIVACY)
+- Data Isolation: For security and efficiency, an Employee does NOT see all volunteers in the database. 
+- Filtering Logic: The SQL query for the Employee Dashboard uses a JOIN on the 'Assignments' table to show only volunteers linked to that specific Employee's Bootcamp ID.
+
+4. MANAGER (STRATEGIC & FINANCIAL OVERVIEW)
+- Top-Level Access: Managers have the highest privilege. They oversee Secretary performance.
+- Financial Mandate: They manage 'Corporate Partnerships'. When a company sponsors a bootcamp, the Manager records this in the 'Sponsorships' table. This funding covers materials and training costs.
+
+--- PART 2: EXPANDED UNITED NATIONS & UNDP CONTEXT ---
+Use this for general domain questions.
+
+- UNDP MISSION: The UNDP's primary mission is to help countries achieve the Sustainable Development Goals (SDGs). It focuses heavily on climate resilience, sustainable energy, and gender equality.
+- THE 17 SDGs: If asked for examples, the key goals are Goal 1 (No Poverty), Goal 5 (Gender Equality), Goal 13 (Climate Action), and Goal 17 (Partnerships for the Goals).
+- FUNDING MODEL: The UNDP is funded entirely by voluntary contributions from UN Member States, multilateral organizations, the private sector, and other sources.
+- GLOBAL PRESENCE: Headquartered in New York City, the UNDP is the largest UN development aid agency, active in nearly every country on earth.
+
+--- PART 3: TECHNICAL ARCHITECTURE (FOR VIVA/PRESENTATION) ---
+- Integration: This system uses a Decoupled Architecture. A PHP/MySQL frontend handles user data, while a Python/Flask microservice (Gemini AI) handles intelligent document retrieval and user support.
+- AI Model: The system uses Retrieval-Augmented Generation (RAG) to ensure the chatbot only speaks based on official UNDP documentation and system rules.

@@ -1,0 +1,172 @@
+/* --- Variables & Reset --- */
+:root {
+    --primary-color: #006eb6; /* UNDP Blue-ish tone */
+    --secondary-color: #f0f4f8;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --white: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.92);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --radius-lg: 12px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    background-image: url('../media/unlog.webp'); /* Keeping your image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+/* --- Layout --- */
+.main-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background: rgba(0, 0, 0, 0.3); /* Dark overlay to make text readable */
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* --- Header --- */
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.dashboard-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.dashboard-header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* --- Grid & Cards --- */
+.grid-layout {
+    display: grid;
+    gap: 30px;
+}
+
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-radius: var(--radius-lg);
+    padding: 25px;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.card-header h2 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+/* --- Tables --- */
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+th {
+    text-align: left;
+    padding: 12px 15px;
+    background-color: #f8fafc;
+    color: var(--text-light);
+    font-weight: 600;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #e5e7eb;
+    color: var(--text-dark);
+}
+
+tbody tr:hover {
+    background-color: #f1f5f9;
+}
+
+/* --- Components (Buttons & Badges) --- */
+.btn-action {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn-action:hover {
+    background-color: #005a96;
+}
+
+.link-blue {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.status-tag {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.status-tag.success {
+    background-color: #d1fae5;
+    color: #065f46;
+}
+
+.status-tag.pending {
+    background-color: #fef3c7;
+    color: #92400e;
+}
+
+.badge {
+    background: var(--text-dark);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+}
